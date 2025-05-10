@@ -1,38 +1,61 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body, html, #root, .Terminal {
+  background: #000;
+  color: #fff;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', 'Courier New', monospace;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 0;
+  padding: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.Terminal {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 8px 8px 8px;
+  background: #000;
+  min-height: 100vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.terminal-ascii {
+  color: #fff;
+  font-size: 1.1em;
+  line-height: 1.1;
+  white-space: pre;
+  margin-bottom: 16px;
+}
+
+.terminal-output {
+  margin-bottom: 8px;
+  white-space: pre-wrap;
+}
+
+.terminal-prompt {
+  color: #bada55;
+  font-weight: bold;
+}
+.terminal-prompt-user {
+  color: #ffe066;
+}
+.terminal-prompt-symbol {
+  color: #39ff14;
+}
+.terminal-link {
+  color: #b388ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.terminal-input {
+  background: none;
+  border: none;
+  color: #fff;
+  font: inherit;
+  outline: none;
+  width: 80%;
+}
+
+.terminal-help-cmd {
+  color: #b388ff;
+}
+.terminal-help-desc {
+  color: #fff;
+  margin-left: 8px;
 }
