@@ -14,19 +14,20 @@ const ASCII = `
                                                                                    
 `;
 
-const WELCOME = `Welcome to Bob Wei's terminal. Cofounder/CTO @ Embedder.\nType help to get started. Or type exit for web version.\n\n`;
+const WELCOME = `Welcome to Bob Wei's terminal. \nCE+Robotics @ Michigan, CTO @ Embedder, Embedded SWE @ Tesla.\nType help to get started. Or type exit for web version.\n\n`;
 
 const HELP = [
   { cmd: 'help', desc: `list all commands (you're looking at it)` },
   { cmd: 'whois bob', desc: 'learn about me' },
   { cmd: 'resume', desc: 'my resume' },
+  { cmd: 'linkedin', desc: 'my linkedin' },
   { cmd: 'email', desc: 'reach out to me' },
   { cmd: 'twitter', desc: 'twitter accounts' },
   { cmd: 'instagram', desc: 'instagram account' },
+  { cmd: 'embedder', desc: 'check out how we are modernizing embedded software' },
   { cmd: 'git', desc: 'this repo' },
   { cmd: 'github', desc: 'all repos' },
   { cmd: 'locate', desc: 'physical address' },
-  { cmd: 'embedder', desc: 'check out how we are modernizing embedded software' },
   { cmd: 'test', desc: 'do not use' },
   { cmd: 'other', desc: 'try your fav commands (e.g. ls, groups, su)' },
 ];
@@ -38,7 +39,8 @@ const RESPONSES = {
       <span className="terminal-help-desc">{desc}</span>
     </div>
   )),
-  'whois bob': () => 'I shit lol',
+  'whois bob': () => 'CE+Robotics @ Michigan, CTO @ Embedder, Embedded SWE @ Tesla',
+  linkedin: () => <span>LinkedIn: <a className="terminal-link" href="https://www.linkedin.com/in/jiachew/" target="_blank" rel="noopener noreferrer">linkedin.com/in/jiachew</a></span>,
   email: () => <span>Email me at <a className="terminal-link" href="mailto:jiachew@umich.edu">jiachew@umich.edu</a></span>,
   twitter: () => <span>Twitter: <a className="terminal-link" href="https://twitter.com/bobwei" target="_blank" rel="noopener noreferrer">@bobwei</a></span>,
   instagram: () => <span>Instagram: <a className="terminal-link" href="https://www.instagram.com/bob_wei1/" target="_blank" rel="noopener noreferrer">@bob_wei1</a></span>,
@@ -50,15 +52,16 @@ const RESPONSES = {
   other: () => 'Try commands like ls, groups, su (not all are supported).',
   exit: () => window.location.assign('https://motherfuckingwebsite.com/'),
   resume: () => window.location.assign(process.env.PUBLIC_URL + '/Jiachen_wei_Resume__fall_2025_.pdf'),
+  groups: () => <span>V1@michigan</span>,
 };
 
 function parseCommand(input) {
-  const trimmed = input.trim();
+  const trimmed = input.trim().toLowerCase();
   if (trimmed === '') return '';
   if (RESPONSES[trimmed]) return RESPONSES[trimmed]();
   if (trimmed.startsWith('whois ')) return RESPONSES['whois root']();
   if (trimmed.startsWith('tldr ')) return 'Portfolio company info not found.';
-  return `Command not found: ${trimmed}`;
+  return `Command not found: ${input}`;
 }
 
 export default function Terminal() {
